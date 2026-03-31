@@ -1,0 +1,16 @@
+.{
+    .name = .zide_tree_sitter,
+    .version = "0.0.0-dev",
+    .fingerprint = 0xd4f529b63156f0bb,
+    .minimum_zig_version = "0.15.1",
+    .dependencies = .{},
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "README.md",
+        "assets",
+        "tools",
+        "src",
+        "docs",
+    },
+}
