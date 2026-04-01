@@ -28,6 +28,17 @@ The repo should eventually provide:
 - generated syntax mapping assets
 - documented local and release workflows
 
+Current consumer contract:
+
+- grammar packs install under the user grammar root:
+  - Windows: `%LOCALAPPDATA%/Zide/grammars`
+  - elsewhere: `~/.config/zide/grammars`
+- shared query and syntax-mapping assets install under the user asset root:
+  - Windows: `%LOCALAPPDATA%/Zide/tree-sitter-assets`
+  - elsewhere: `~/.config/zide/tree-sitter-assets`
+- `zide` runtime resolves those shared assets through its asset-root search path,
+  with project/user overrides still taking precedence where appropriate
+
 ## Current Extracted Surface
 
 The first extracted slice includes:
@@ -38,5 +49,4 @@ The first extracted slice includes:
 - `assets/queries/**`
 - `assets/syntax/generated.lua`
 
-The source of truth is still temporarily duplicated in `zide` until consumer
-rewiring is done.
+`zide` has already been rewired to consume the shared asset-root contract.

@@ -36,9 +36,9 @@ Those stay in `zide`.
 
 ## Status
 
-Initial extraction scaffold. This repo now contains the current producer-side
-grammar tooling and generic query/mapping assets copied from `zide`, but `zide`
-has not been rewired to consume them from here yet.
+Initial producer repo is live. `zide` now consumes grammar tooling through this
+repo and resolves shared query/mapping assets through the installed
+`tree-sitter-assets` root instead of owning mirrored copies.
 
 Authoritative split lives in:
 
@@ -46,7 +46,24 @@ Authoritative split lives in:
 
 ## Near-term plan
 
-1. Rewire `zide` to consume grammar tooling/assets through this repo's contract.
-2. Remove duplicated producer ownership from `zide`.
-3. Document local co-development and release flow.
-4. Add release packaging once the consumer contract is stable.
+1. Tighten and document the installed consumer contract.
+2. Add release packaging once the contract is stable.
+3. Expand tests around asset production and consumer resolution.
+4. Consider versioned/pinned consumption outside local sibling development.
+
+## Consumer Layout
+
+Default installed layout:
+
+```text
+Windows:
+  %LOCALAPPDATA%/Zide/grammars/
+  %LOCALAPPDATA%/Zide/tree-sitter-assets/
+
+Elsewhere:
+  ~/.config/zide/grammars/
+  ~/.config/zide/tree-sitter-assets/
+```
+
+`zig build grammar-update` from `zide` proxies into this repo and refreshes that
+installed layout.
